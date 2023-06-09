@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.static_folder = 'static'
 
 
-def declare_env(key='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'):
+def declare_env(key):
     os.environ['OPENAI_API_KEY'] = key
 
 
@@ -25,6 +25,7 @@ def about():
 def get_bot_response():
     if request.args.get('api_key'):
         apikey = request.args.get('api_key')
+        print(apikey)
         try:
             declare_env(apikey)
         except:
